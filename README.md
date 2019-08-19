@@ -2,4 +2,4 @@
 A Messaging App
 
 
-<img src="Screenshot/login.png" width="200"> <img src="Screenshot/register.png" width="200"> <img src="Screenshot/messages.png" width="200"> <img src="Screenshot/your-profile.png" width="200"> <img src="Screenshot/all-users.png" width="200"> <img src="Screenshot/search-users.png" width="200"> <img src="Screenshot/user-profile.png" width="200"> <img src="Screenshot/conversation.png" width="200"> <img src="Screenshot/search-in-conversation.png" width="200">
+<img src="Screenshots/login.png" width="200"> <img src="Screenshots/register.png" width="200"> <img src="Screenshots/messages.png" width="200"> <img src="Screenshots/your-profile.png" width="200"> <img src="Screenshots/all-users.png" width="200"> <img src="Screenshots/search-users.png" width="200"> <img src="Screenshots/user-profile.png" width="200"> <img src="Screenshots/conversation.png" width="200"> <img src="Screenshots/search-in-conversation.png" width="200">
