@@ -5,5 +5,5 @@ Login / Register / All Messages / Profile
 <img src="Screenshots/login.png" width="130"> <img src="Screenshots/register.png" width="130"> <img src="Screenshots/messages.png" width="130"> <img src="Screenshots/your-profile.png" width="130">  
 All Users / Search Users / User Profile  
 <img src="Screenshots/all-users.png" width="130"> <img src="Screenshots/search-users.png" width="130"> <img src="Screenshots/user-profile.png" width="130">  
-Conversation / Search in Conversation  
-<img src="Screenshots/conversation.png" width="130"> <img src="Screenshots/search-in-conversation.png" width="130">
+Conversation / Image View / Search in Conversation  
+<img src="Screenshots/conversation.png" width="130"> <img src="Screenshots/image.png" width="130"> <img src="Screenshots/search-in-conversation.png" width="130">
