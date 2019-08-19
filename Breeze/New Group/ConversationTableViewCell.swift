@@ -87,9 +87,7 @@ class ConversationTableViewCell: UITableViewCell {
             if let imageHeight = message.imageHeight, let imageWidth = message.imageWidth {
                 if imageWidth > imageHeight {
                     make.width.equalTo(200)
-//                    make.height.equalTo(CGFloat(imageHeight/imageWidth*200))
                 } else {
-//                    make.height.equalTo(200)
                     make.width.equalTo(CGFloat(imageWidth/imageHeight*200))
                 }
             }

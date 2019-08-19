@@ -32,7 +32,6 @@ class RegisterViewController: UIViewController {
         view.backgroundColor = .baseBlue
         
         navigationController?.navigationBar.isHidden = true
-//        navigationController?.setNavigationBarHidden(true, animated: true)
         
         registerLabel = UILabel()
         registerLabel.textColor = .white
@@ -269,51 +268,6 @@ class RegisterViewController: UIViewController {
         }
     }
     
-//    func createUser(pic: String) {
-//        let userData = [
-//            "username": username,
-//            "profilePic" : pic
-//        ]
-//
-//        //        KeychainWrapper.standard.set(userID, forKey: "uid")
-//
-//        let userRef = Database.database().reference().child("users").child(userID)
-//        userRef.setValue(userData)
-//        dismiss(animated: true, completion: nil)
-//
-//    }
-//
-//    func uploadPicture() {
-//
-//        let picID = NSUUID().uuidString
-//        let storageRef = Storage.storage().reference().child(picID)
-//        if profilePicView.image != nil {
-//            if let profilePic = profilePicView.image, let picData = profilePic.jpegData(compressionQuality: 0.1) {
-//                let metadata = StorageMetadata()
-//                metadata.contentType = "picture/jpeg"
-//                storageRef.putData(picData, metadata: metadata) { (metadata, error) in
-//                    if error != nil {
-//                        print ("didn't upload picture")
-//                    } else {
-//                        print ("uploaded")
-//                        storageRef.downloadURL(completion: { (url, error) in
-//                            if error != nil {
-//                                print (error!)
-//                            } else {
-//                                if let url = url?.absoluteString {
-//                                    self.createUser(pic: url)
-//                                }
-//                            }
-//                        })
-//                    }
-//
-//                }
-//
-//            }
-//        }
-//
-//    }
-    
     @objc func choosePic() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             picPicker.sourceType = .photoLibrary
@@ -324,8 +278,6 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func backToLogin() {
-//        let loginVC = LoginViewController()
-//        self.navigationController?.pushViewController(loginVC, animated: true)
         self.navigationController?.popViewController(animated: true)
     }
     

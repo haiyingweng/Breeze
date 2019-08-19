@@ -39,7 +39,6 @@ class Message {
     
     func getTime() -> String {
         let dateFormatter = DateFormatter()
-//        let now = Date()
         let timeInSeconds = Double(self.time!)
         let messageDate = Date(timeIntervalSince1970: timeInSeconds!)
         var time: String!
@@ -52,19 +51,6 @@ class Message {
             dateFormatter.dateFormat = "MM/dd/yy"
             time = dateFormatter.string(from: messageDate as Date)
         }
-//        let timeDifference = Calendar.current.dateComponents([.hour], from: messageDate, to: now)
-//        let hour = Calendar.current.dateComponents([.hour], from: messageDate)
-//        if let timeHourDifference = timeDifference.hour {
-//            if timeHourDifference < 24 {
-//                dateFormatter.dateFormat = "hh:mm a"
-//                time = dateFormatter.string(from: messageDate as Date)
-//            } else if timeHourDifference < 48 {
-//                time = "Yesterday"
-//            } else {
-//                dateFormatter.dateFormat = "MM/dd/yy"
-//                time = dateFormatter.string(from: messageDate as Date)
-//            }
-//        }
         return time
     }
 }

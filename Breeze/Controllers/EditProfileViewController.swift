@@ -203,8 +203,6 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func cancelPressed() {
-//        let messageVC = MessagesViewController()
-//        self.navigationController?.pushViewController(messageVC, animated: true)
         self.navigationController?.popViewController(animated: true)
     }
     
