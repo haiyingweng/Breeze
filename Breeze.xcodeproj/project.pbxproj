@@ -14,18 +14,18 @@
 		300378A922F12B2E00809DAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 300378A822F12B2E00809DAF /* GoogleService-Info.plist */; };
 		300378AF22F27E4500809DAF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378AE22F27E4500809DAF /* RegisterViewController.swift */; };
 		300378B122F2800D00809DAF /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378B022F2800D00809DAF /* MessagesViewController.swift */; };
-		300378B322F505D900809DAF /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378B222F505D900809DAF /* MessagesTableViewCell.swift */; };
 		300378B522F53BF400809DAF /* AddChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378B422F53BF400809DAF /* AddChatViewController.swift */; };
-		300378B722F53C8500809DAF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378B622F53C8500809DAF /* UserTableViewCell.swift */; };
 		300378BB22F65E4E00809DAF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378BA22F65E4E00809DAF /* User.swift */; };
 		300378BD22F73C3000809DAF /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378BC22F73C2F00809DAF /* EditProfileViewController.swift */; };
 		300378BF22F77F2D00809DAF /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378BE22F77F2D00809DAF /* ConversationViewController.swift */; };
-		300378C122F7842500809DAF /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378C022F7842500809DAF /* ConversationTableViewCell.swift */; };
 		300378C322F7A65D00809DAF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378C222F7A65D00809DAF /* Message.swift */; };
 		300378C52303805B00809DAF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378C42303805B00809DAF /* Extensions.swift */; };
 		300378C7230380E400809DAF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378C6230380E400809DAF /* UserProfileViewController.swift */; };
 		300378C92306295700809DAF /* SearchInConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378C82306295700809DAF /* SearchInConversationViewController.swift */; };
-		300378CB23062BB300809DAF /* SearchInConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378CA23062BB300809DAF /* SearchInConversationTableViewCell.swift */; };
+		300378D1230A22D200809DAF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378CD230A22D200809DAF /* UserTableViewCell.swift */; };
+		300378D2230A22D200809DAF /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378CE230A22D200809DAF /* MessagesTableViewCell.swift */; };
+		300378D3230A22D200809DAF /* SearchInConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378CF230A22D200809DAF /* SearchInConversationTableViewCell.swift */; };
+		300378D4230A22D200809DAF /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300378D0230A22D200809DAF /* ConversationTableViewCell.swift */; };
 		5103259496D7261D50DA6B8C /* Pods_Breeze.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272BD72B7DD28C0DFB28F4FB /* Pods_Breeze.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,18 +40,18 @@
 		300378A822F12B2E00809DAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		300378AE22F27E4500809DAF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		300378B022F2800D00809DAF /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		300378B222F505D900809DAF /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		300378B422F53BF400809DAF /* AddChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatViewController.swift; sourceTree = "<group>"; };
-		300378B622F53C8500809DAF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		300378BA22F65E4E00809DAF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		300378BC22F73C2F00809DAF /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		300378BE22F77F2D00809DAF /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		300378C022F7842500809DAF /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		300378C222F7A65D00809DAF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		300378C42303805B00809DAF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		300378C6230380E400809DAF /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		300378C82306295700809DAF /* SearchInConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInConversationViewController.swift; sourceTree = "<group>"; };
-		300378CA23062BB300809DAF /* SearchInConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInConversationTableViewCell.swift; sourceTree = "<group>"; };
+		300378CD230A22D200809DAF /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		300378CE230A22D200809DAF /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
+		300378CF230A22D200809DAF /* SearchInConversationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInConversationTableViewCell.swift; sourceTree = "<group>"; };
+		300378D0230A22D200809DAF /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		54832AD589C138494A1AE66C /* Pods-Breeze.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breeze.debug.xcconfig"; path = "Target Support Files/Pods-Breeze/Pods-Breeze.debug.xcconfig"; sourceTree = "<group>"; };
 		7AE4D68018368CFB4F70CDC6 /* Pods-Breeze.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breeze.release.xcconfig"; path = "Target Support Files/Pods-Breeze/Pods-Breeze.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +89,7 @@
 		3003789522F1296300809DAF /* Breeze */ = {
 			isa = PBXGroup;
 			children = (
-				300378AD22F1302800809DAF /* Cells */,
+				300378CC230A22D200809DAF /* Cells */,
 				300378AC22F1301300809DAF /* Controllers */,
 				300378AB22F1300D00809DAF /* Models */,
 				3003789622F1296300809DAF /* AppDelegate.swift */,
@@ -126,16 +126,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		300378AD22F1302800809DAF /* Cells */ = {
+		300378CC230A22D200809DAF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				300378B222F505D900809DAF /* MessagesTableViewCell.swift */,
-				300378B622F53C8500809DAF /* UserTableViewCell.swift */,
-				300378C022F7842500809DAF /* ConversationTableViewCell.swift */,
-				300378CA23062BB300809DAF /* SearchInConversationTableViewCell.swift */,
+				300378CD230A22D200809DAF /* UserTableViewCell.swift */,
+				300378CE230A22D200809DAF /* MessagesTableViewCell.swift */,
+				300378CF230A22D200809DAF /* SearchInConversationTableViewCell.swift */,
+				300378D0230A22D200809DAF /* ConversationTableViewCell.swift */,
 			);
-			name = Cells;
-			path = "New Group";
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		3F3D79260A034915302446FF /* Pods */ = {
@@ -289,17 +288,17 @@
 				300378AF22F27E4500809DAF /* RegisterViewController.swift in Sources */,
 				300378BD22F73C3000809DAF /* EditProfileViewController.swift in Sources */,
 				300378C92306295700809DAF /* SearchInConversationViewController.swift in Sources */,
-				300378B722F53C8500809DAF /* UserTableViewCell.swift in Sources */,
-				300378B322F505D900809DAF /* MessagesTableViewCell.swift in Sources */,
+				300378D4230A22D200809DAF /* ConversationTableViewCell.swift in Sources */,
+				300378D3230A22D200809DAF /* SearchInConversationTableViewCell.swift in Sources */,
 				300378BB22F65E4E00809DAF /* User.swift in Sources */,
+				300378D2230A22D200809DAF /* MessagesTableViewCell.swift in Sources */,
 				3003789722F1296300809DAF /* AppDelegate.swift in Sources */,
-				300378C122F7842500809DAF /* ConversationTableViewCell.swift in Sources */,
 				300378C52303805B00809DAF /* Extensions.swift in Sources */,
-				300378CB23062BB300809DAF /* SearchInConversationTableViewCell.swift in Sources */,
 				300378C7230380E400809DAF /* UserProfileViewController.swift in Sources */,
 				300378C322F7A65D00809DAF /* Message.swift in Sources */,
 				300378B522F53BF400809DAF /* AddChatViewController.swift in Sources */,
 				300378BF22F77F2D00809DAF /* ConversationViewController.swift in Sources */,
+				300378D1230A22D200809DAF /* UserTableViewCell.swift in Sources */,
 				300378B122F2800D00809DAF /* MessagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
