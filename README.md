@@ -1,5 +1,5 @@
 # Breeze
-Breeze is a real-time messaging app built with Firebase 
+**Breeze is a real-time messaging app built with Firebase.**
 
 The messaging app has features including login, register an account, edit personal profile, search users, create a conversation, and search messages in a conversation. 
 
