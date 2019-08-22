@@ -13,8 +13,10 @@ class EditProfileViewController: UIViewController {
     
     var profilePicView: UIImageView!
     var usernameLabel: UILabel!
-    var emailLabel: UILabel!
     var usernameTextField: UITextField!
+    var bioLabel: UILabel!
+    var bioTextField: UITextField!
+    var emailLabel: UILabel!
     var userEmailLabel: UILabel!
     var profilePicButton: UIButton!
     var logoutButton: UIButton!
@@ -25,6 +27,7 @@ class EditProfileViewController: UIViewController {
     
     var originalProfilePicData: Data?
     var originalUsername: String!
+    var originalBio: String!
     
     var currentUser: User!
     let currentUserUid = Auth.auth().currentUser?.uid
@@ -48,7 +51,7 @@ class EditProfileViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = cancelBarItem
         
         doneButton = UIButton(type: .custom)
-        doneButton.setTitle("Done", for: .normal)
+        doneButton.setTitle("Save", for: .normal)
         doneButton.setTitleColor(.darkerBlue, for: .normal)
         doneButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         doneButton.addTarget(self, action: #selector(donePressed), for: .touchUpInside)
@@ -67,21 +70,35 @@ class EditProfileViewController: UIViewController {
         usernameLabel.text = "Username"
         usernameLabel.textColor = .darkGray
         usernameLabel.textAlignment = .left
-        usernameLabel.font = .systemFont(ofSize: 18, weight: .regular)
+        usernameLabel.font = .systemFont(ofSize: 16, weight: .regular)
         view.addSubview(usernameLabel)
         
         usernameTextField = UITextField()
         usernameTextField.textColor = .darkerBlue
         usernameTextField.clearButtonMode = .whileEditing
-        usernameTextField.font = .systemFont(ofSize: 20, weight: .bold)
+        usernameTextField.font = .systemFont(ofSize: 18, weight: .bold)
         usernameTextField.underline()
         view.addSubview(usernameTextField)
+        
+        bioLabel = UILabel()
+        bioLabel.text = "Bio"
+        bioLabel.textColor = .darkGray
+        bioLabel.textAlignment = .left
+        bioLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        view.addSubview(bioLabel)
+        
+        bioTextField = UITextField()
+        bioTextField.textColor = .darkerBlue
+        bioTextField.clearButtonMode = .whileEditing
+        bioTextField.font = .systemFont(ofSize: 18, weight: .regular)
+        bioTextField.underline()
+        view.addSubview(bioTextField)
         
         emailLabel = UILabel()
         emailLabel.text = "Email"
         emailLabel.textColor = .darkGray
         emailLabel.textAlignment = .left
-        emailLabel.font = .systemFont(ofSize: 18, weight: .regular)
+        emailLabel.font = .systemFont(ofSize: 16, weight: .regular)
         view.addSubview(emailLabel)
         
         userEmailLabel = UILabel()
@@ -133,21 +150,35 @@ class EditProfileViewController: UIViewController {
             make.top.equalTo(profilePicButton.snp.bottom).offset(40)
             make.left.equalTo(view).offset(40)
             make.height.equalTo(30)
-            make.width.equalTo(100)
+            make.width.equalTo(80)
         }
         
         usernameTextField.snp.makeConstraints { make in
             make.top.equalTo(profilePicButton.snp.bottom).offset(40)
-            make.left.equalTo(usernameLabel.snp.right).offset(10)
+            make.left.equalTo(usernameLabel.snp.right).offset(5)
+            make.height.equalTo(30)
+            make.right.equalTo(view).offset(-40)
+        }
+        
+        bioLabel.snp.makeConstraints { make in
+            make.top.equalTo(usernameLabel.snp.bottom).offset(15)
+            make.left.equalTo(view).offset(40)
+            make.height.equalTo(30)
+            make.width.equalTo(80)
+        }
+        
+        bioTextField.snp.makeConstraints { make in
+            make.top.equalTo(bioLabel)
+            make.left.equalTo(usernameTextField)
             make.height.equalTo(30)
             make.right.equalTo(view).offset(-40)
         }
         
         emailLabel.snp.makeConstraints { make in
-            make.top.equalTo(usernameLabel.snp.bottom).offset(15)
+            make.top.equalTo(bioLabel.snp.bottom).offset(15)
             make.left.equalTo(view).offset(40)
             make.height.equalTo(30)
-            make.width.equalTo(100)
+            make.width.equalTo(80)
         }
         
         userEmailLabel.snp.makeConstraints { make in
@@ -186,6 +217,10 @@ class EditProfileViewController: UIViewController {
                         self.originalProfilePicData = image.pngData()
                     }
                 }
+                if let bio = self.currentUser.bio {
+                    self.originalBio = bio
+                    self.bioTextField.text = bio
+                }
                 self.originalUsername = self.currentUser.username
                 self.usernameTextField.text = self.currentUser.username
                 self.userEmailLabel.text = self.currentUser.email
@@ -215,13 +250,20 @@ class EditProfileViewController: UIViewController {
             print ("username unchanged")
         }
         
+        if bioTextField.text != originalBio {
+            let bioRef = Database.database().reference().child("users").child(uid).child("bio")
+            bioRef.setValue(bioTextField.text)
+        } else {
+            print ("bio unchanged")
+        }
+        
         let imageData = profilePicView.image?.pngData()
-        if imageData != originalProfilePicData, let image = profilePicView.image, let imageUrl = currentUser.profilePic {
+        if imageData != originalProfilePicData, let image = profilePicView.image {
             uploadImageToFirebase(image: image)
-            deleteImageFromStorage(imageUrl: imageUrl)
         } else {
             print ("profile pic unchanged")
         }
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -247,17 +289,6 @@ class EditProfileViewController: UIViewController {
                         }
                     })
                 }
-            }
-        }
-    }
-    
-    private func deleteImageFromStorage(imageUrl: String) {
-        let imageStorageRef = Storage.storage().reference().child(imageUrl)
-        imageStorageRef.delete { (error) in
-            if error != nil {
-                print (error!)
-            } else {
-                print ("image deleted")
             }
         }
     }

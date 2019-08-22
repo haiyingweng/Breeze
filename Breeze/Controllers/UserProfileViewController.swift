@@ -15,6 +15,7 @@ class UserProfileViewController: UIViewController {
 
     var profilePicView: UIImageView!
     var usernameLabel: UILabel!
+    var bioLabel: UILabel!
     var emailLabel: UILabel!
     var messageButton: UIButton!
     
@@ -50,14 +51,22 @@ class UserProfileViewController: UIViewController {
         usernameLabel = UILabel()
         usernameLabel.textColor = .darkerBlue
         usernameLabel.textAlignment = .center
-        usernameLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        usernameLabel.font = .systemFont(ofSize: 25, weight: .bold)
         view.addSubview(usernameLabel)
         
         emailLabel = UILabel()
         emailLabel.textColor = .darkerBlue
         emailLabel.textAlignment = .center
-        emailLabel.font = .systemFont(ofSize: 20, weight: .light)
+        emailLabel.font = .systemFont(ofSize: 15, weight: .light)
         view.addSubview(emailLabel)
+        
+        bioLabel = UILabel()
+        bioLabel.sizeToFit()
+        bioLabel.numberOfLines = 0
+        bioLabel.textColor = .darkerBlue
+        bioLabel.textAlignment = .center
+        bioLabel.font = .systemFont(ofSize: 18, weight: .regular)
+        view.addSubview(bioLabel)
         
         messageButton = UIButton()
         messageButton.setTitle("Message", for: .normal)
@@ -83,20 +92,27 @@ class UserProfileViewController: UIViewController {
         usernameLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view)
             make.top.equalTo(profilePicView.snp.bottom).offset(20)
-            make.height.equalTo(25)
+            make.height.equalTo(30)
             make.width.equalTo(200)
         }
         
         emailLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.top.equalTo(usernameLabel.snp.bottom).offset(10)
+            make.top.equalTo(usernameLabel.snp.bottom).offset(5)
             make.height.equalTo(25)
             make.width.equalTo(300)
         }
         
+        bioLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(emailLabel.snp.bottom).offset(10)
+            make.width.equalTo(300)
+            make.height.equalTo(100)
+        }
+        
         messageButton.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.top.equalTo(emailLabel.snp.bottom).offset(40)
+            make.top.equalTo(bioLabel.snp.bottom).offset(10)
             make.width.equalTo(150)
             make.height.equalTo(40)
         }
@@ -110,6 +126,9 @@ class UserProfileViewController: UIViewController {
                 let user = User(dictionary: userDict)
                 if let url = user.profilePic {
                     self.profilePicView.getImagesFromUrl(url: url)
+                }
+                if let bio = user.bio {
+                    self.bioLabel.text = bio
                 }
                 self.usernameLabel.text = user.username
                 self.emailLabel.text = user.email

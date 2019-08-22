@@ -13,11 +13,13 @@ class User {
     var username: String?
     var profilePic: String?
     var email: String?
+    var bio: String? 
     
     init(dictionary:[String:Any]) {
         self.username = dictionary["username"] as? String
         self.profilePic = dictionary["profilePic"] as? String
         self.email = dictionary["email"] as? String
+        self.bio = dictionary["bio"] as? String
     }
     
 }
