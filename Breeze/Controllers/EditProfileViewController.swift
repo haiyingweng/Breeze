@@ -89,6 +89,7 @@ class EditProfileViewController: UIViewController {
         
         bioTextField = UITextField()
         bioTextField.textColor = .darkerBlue
+        bioTextField.placeholder = "Tell something about yourself."
         bioTextField.clearButtonMode = .whileEditing
         bioTextField.font = .systemFont(ofSize: 18, weight: .regular)
         bioTextField.underline()
