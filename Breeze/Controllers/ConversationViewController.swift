@@ -40,6 +40,9 @@ class ConversationViewController: UIViewController {
     //FOR ZOOMING IMAGE
     var backgroundView: UIScrollView!
     var zoomImageView: UIImageView!
+    var imageDownloadButton: UIButton!
+    var exitButton: UIButton!
+    var popupLabel: UILabel!
     var initialFrame: CGRect!
     
     init (friend: User) {
@@ -388,8 +391,16 @@ extension ConversationViewController: ImageZoomDelegate {
         zoomImageView = UIImageView(frame: initialFrame!)
         zoomImageView.image = imageView.image
         zoomImageView.isUserInteractionEnabled = true
-        zoomImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageZoomOut)))
+        zoomImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageZoomOutTap)))
         
+        imageDownloadButton = UIButton()
+        imageDownloadButton.setImage(UIImage(named: "download"), for: .normal)
+        imageDownloadButton.addTarget(self, action: #selector(saveImageToCameraRoll), for: .touchUpInside)
+        
+        exitButton = UIButton()
+        exitButton.setImage(UIImage(named: "circle-x"), for: .normal)
+        exitButton.addTarget(self, action: #selector(xPressed), for: .touchUpInside)
+    
         if let keyWindow = UIApplication.shared.keyWindow {
             
             backgroundView = UIScrollView(frame: keyWindow.frame)
@@ -405,6 +416,10 @@ extension ConversationViewController: ImageZoomDelegate {
             backgroundView.alpha = 0
             keyWindow.addSubview(backgroundView)
             backgroundView.addSubview(zoomImageView)
+            backgroundView.addSubview(imageDownloadButton)
+            backgroundView.addSubview(exitButton)
+            
+            setButtonConstraints()
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                 self.backgroundView.alpha = 1
@@ -413,26 +428,78 @@ extension ConversationViewController: ImageZoomDelegate {
                 self.zoomImageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
                 self.zoomImageView.center = keyWindow.center
             }, completion: nil)
-            
         }
     }
     
-    @objc func imageZoomOut(tap: UITapGestureRecognizer) {
+    @objc func imageZoomOutTap(tap: UITapGestureRecognizer) {
         if let zoomOutImageView = tap.view as? UIImageView {
-            
-            zoomOutImageView.layer.cornerRadius = 20
-            zoomOutImageView.clipsToBounds = true
-            
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                zoomOutImageView.frame = self.initialFrame
-                self.backgroundView.alpha = 0
-            }) { (completed: Bool) in
-                zoomOutImageView.removeFromSuperview()
-            }
+            imageZoomOut(zoomOutImageView: zoomOutImageView)
         }
     }
+    
+    @objc func xPressed() {
+        imageZoomOut(zoomOutImageView: zoomImageView)
+    }
+    
+    func imageZoomOut(zoomOutImageView: UIImageView) {
+        zoomOutImageView.layer.cornerRadius = 20
+        zoomOutImageView.clipsToBounds = true
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            zoomOutImageView.frame = self.initialFrame
+            self.backgroundView.alpha = 0
+        }) { (completed: Bool) in
+            self.backgroundView.removeFromSuperview()
+        }
+    }
+    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return zoomImageView
+    }
+    
+    func setButtonConstraints() {
+        imageDownloadButton.snp.makeConstraints { make in
+            make.height.width.equalTo(45)
+            make.bottom.equalTo(view.snp.bottom).offset(-80)
+            make.left.equalTo(view).offset(30)
+        }
+        
+        exitButton.snp.makeConstraints { make in
+            make.height.width.equalTo(25)
+            make.top.equalTo(view.snp.top).offset(10)
+            make.right.equalTo(view).offset(-30)
+        }
+    }
+    
+    @objc func saveImageToCameraRoll() {
+        guard let image = zoomImageView.image else { return }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if error != nil {
+            showPopup(text: "Save Failed")
+        } else {
+            showPopup(text: "Image Saved")
+        }
+    }
+    
+    func showPopup(text: String) {
+        popupLabel = UILabel(frame: CGRect(x: view.frame.width/2-100, y: view.frame.height/2, width: 200, height: 100))
+        popupLabel.textColor = .white
+        popupLabel.backgroundColor = .black
+        popupLabel.alpha = 0.8
+        popupLabel.text = text
+        popupLabel.textAlignment = .center
+        popupLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        backgroundView.addSubview(popupLabel)
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
+    }
+    
+    @objc func dismissPopup(){
+        if popupLabel != nil {
+            popupLabel.removeFromSuperview()
+        }
     }
 }
 
