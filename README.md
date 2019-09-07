@@ -10,4 +10,4 @@ All Users / Search Users / User Profile
 <img src="Screenshots/all-users.png" width="150"> <img src="Screenshots/search-users.png" width="150"> <img src="Screenshots/user-profile.png" width="150">  
 
 Conversation / Image View / Search in Conversation  
-<img src="Screenshots/conversation.png" width="150"> <img src="Screenshots/image.png" width="150"> <img src="Screenshots/search-in-conversation.png" width="150">
+<img src="Screenshots/conversation.png" width="150"> <img src="Screenshots/image-view.png" width="150"> <img src="Screenshots/image-saved.png" width="150"> <img src="Screenshots/search-in-conversation.png" width="150">
