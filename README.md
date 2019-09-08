@@ -1,7 +1,14 @@
 # Breeze
 **Breeze is a real-time messaging app built with Firebase.**
 
-The messaging app has features including login, register an account, edit personal profile, search users, create a conversation, and search messages in a conversation. 
+**Features** 
+ - Login
+ - Register an account 
+ - Edit personal profile 
+ - Search users 
+ - Create a conversation
+ - Search messages in a conversation
+ - View and save images from a conversation 
 
 Login / Register / All Messages / Profile  
 <img src="Screenshots/login.png" width="150"> <img src="Screenshots/register.png" width="150"> <img src="Screenshots/messages.png" width="150"> <img src="Screenshots/your-profile.png" width="150">  
