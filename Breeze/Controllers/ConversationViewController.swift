@@ -492,8 +492,10 @@ extension ConversationViewController: ImageZoomDelegate {
         popupLabel.text = text
         popupLabel.textAlignment = .center
         popupLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        popupLabel.layer.masksToBounds = true
+        popupLabel.layer.cornerRadius = 6
         backgroundView.addSubview(popupLabel)
-        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
     }
     
     @objc func dismissPopup(){
