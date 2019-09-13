@@ -21,9 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         window = UIWindow(frame: UIScreen.main.bounds)
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                let messagesVC = MessagesViewController()
+                self.window?.rootViewController = UINavigationController(rootViewController: messagesVC)
+            } else {
+                let loginVC = LoginViewController()
+                self.window?.rootViewController = UINavigationController(rootViewController: loginVC)
+            }
+        }
         window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
         window?.makeKeyAndVisible()
-        
+    
         return true
     }
 

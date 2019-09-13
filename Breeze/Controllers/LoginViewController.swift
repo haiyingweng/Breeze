@@ -23,8 +23,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkIfUserLoggedIn()
-        
         view.backgroundColor = .baseBlue
         
         navigationController?.navigationBar.isHidden = true
@@ -79,17 +77,6 @@ class LoginViewController: UIViewController {
         hideKeyboardWhenTapped()
     }
 
-    private func checkIfUserLoggedIn() {
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                let messagesVC = MessagesViewController()
-                self.navigationController?.pushViewController(messagesVC, animated: true)
-            } else {
-                
-            }
-        }
-    }
-    
     func setupConstraints() {
         loginLabel.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(40)
