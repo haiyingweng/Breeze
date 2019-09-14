@@ -34,6 +34,7 @@ class ConversationTableViewCell: UITableViewCell {
         convoBubbleLabel = UILabel()
         convoBubbleLabel.numberOfLines = 0
         convoBubbleLabel.sizeToFit()
+        convoBubbleLabel.font = .systemFont(ofSize: 17)
         bubbleView.addSubview(convoBubbleLabel)
         
         profilePicView = UIImageView()
@@ -45,7 +46,7 @@ class ConversationTableViewCell: UITableViewCell {
         contentView.addSubview(profilePicView)
         
         messageImageView = UIImageView()
-        messageImageView.contentMode = .scaleAspectFill
+        messageImageView.contentMode = .scaleAspectFit
         messageImageView.clipsToBounds = true
         messageImageView.backgroundColor = .white
         messageImageView.layer.masksToBounds = true
@@ -88,7 +89,7 @@ class ConversationTableViewCell: UITableViewCell {
                 if imageWidth > imageHeight {
                     make.width.equalTo(200)
                 } else {
-                    make.width.equalTo(CGFloat(imageWidth/imageHeight*200))
+                    make.width.equalTo(imageWidth/imageHeight*200)
                 }
             }
             if message.senderID == currentUser {

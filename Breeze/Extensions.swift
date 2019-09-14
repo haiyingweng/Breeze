@@ -44,6 +44,17 @@ extension String {
         }
         return indices
     }
+    
+    func labelHeight(fontSize: CGFloat, labelWidth: CGFloat) -> CGFloat {
+        var label: UILabel
+        label = UILabel(frame: CGRect(x:0, y:0, width: labelWidth, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: fontSize)
+        label.text = self
+        label.sizeToFit()
+        return label.frame.height
+
+    }
 }
 
 

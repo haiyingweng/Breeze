@@ -291,6 +291,4 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         dismiss(animated: true, completion: nil)
     }
 }
-    
-
 

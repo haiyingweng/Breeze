@@ -22,6 +22,7 @@ class ConversationViewController: UIViewController {
     
     var friend: User
     var messages = [Message]()
+    let currentUser = Auth.auth().currentUser?.uid
     
     var conversationTableView: UITableView!
     var convoReuseIdentifier = "convoReuseIdentifier"
@@ -44,7 +45,7 @@ class ConversationViewController: UIViewController {
     var exitButton: UIButton!
     var popupLabel: UILabel!
     var initialFrame: CGRect!
-    
+
     init (friend: User) {
         self.friend = friend
         super.init(nibName: nil, bundle: nil)
@@ -76,7 +77,6 @@ class ConversationViewController: UIViewController {
         conversationTableView.delegate = self
         conversationTableView.register(ConversationTableViewCell.self, forCellReuseIdentifier: convoReuseIdentifier)
         conversationTableView.alwaysBounceVertical = true
-        conversationTableView.estimatedRowHeight = 100
         view.addSubview(conversationTableView)
         
         bottomView = UIView()
@@ -201,6 +201,11 @@ class ConversationViewController: UIViewController {
         super.viewWillDisappear(true)
         NotificationCenter.default.removeObserver(self)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupKeyboard()
+    }
 
     func getMessages() {
         guard let uid = Auth.auth().currentUser?.uid, let friendId = friend.uid else {return}
@@ -282,18 +287,6 @@ class ConversationViewController: UIViewController {
 }
 
 extension ConversationViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        let message = self.messages[indexPath.row]
-        if message.imageUrl != nil, let imageHeight = message.imageHeight, let imageWidth = message.imageWidth {
-            if imageWidth > imageHeight {
-                return CGFloat(imageHeight/imageWidth*200+10)
-            } else {
-                return CGFloat(210)
-            }
-        } else {
-            return UITableView.automaticDimension
-        }
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let message = self.messages[indexPath.row]
@@ -304,12 +297,13 @@ extension ConversationViewController: UITableViewDelegate {
                 return CGFloat(210)
             }
         } else {
-            return UITableView.automaticDimension
+            if message.senderID == currentUser {
+                return (message.message?.labelHeight(fontSize: 17, labelWidth: 280))! + 30
+            } else {
+                return (message.message?.labelHeight(fontSize: 17, labelWidth: 240))! + 30
+            }
         }
     }
-    
-
-    
 }
 
 extension ConversationViewController: UITableViewDataSource {

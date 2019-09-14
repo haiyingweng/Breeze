@@ -139,6 +139,8 @@ extension SearchInConversationViewController: UISearchBarDelegate {
             if searchedMessages.isEmpty {
                 noSearchResultLabel.isHidden = false
                 noSearchResultLabel.text = "No Result for '\(searchText)'"
+            } else {
+                noSearchResultLabel.isHidden = true
             }
         }
     }
